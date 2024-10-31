@@ -1,4 +1,6 @@
 <svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
   <!-- Chat Bubble -->
   <path d="M50 5 C27.5 5 10 22.5 10 45 C10 60 18 73 30 80 L30 95 L45 85 C47.5 85 50 85 52.5 85 C75 85 90 67.5 90 45 C90 22.5 72.5 5 50 5 Z" fill="#25D366" stroke="#25D366" stroke-width="2"/>
+  <!-- Dollar Sign -->
+  <text x="50" y="55" font-family="Arial, sans-serif" font-size="60" fill="white" text-anchor="middle" alignment-baseline="middle">$</text>
 </svg>
