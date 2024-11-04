@@ -57,15 +57,15 @@ const exampleData = {
   ]
 };
 
-export async function generateStaticParams() {
-  // const filePath = path.join(process.cwd(), 'public', 'products.json');
-  // const jsonData = fs.readFileSync(filePath, 'utf-8');
-  // const data = JSON.parse(jsonData);
+// export async function generateStaticParams() {
+//   // const filePath = path.join(process.cwd(), 'public', 'products.json');
+//   // const jsonData = fs.readFileSync(filePath, 'utf-8');
+//   // const data = JSON.parse(jsonData);
 
-  return {
-        categories: [1,2,3]
-    };
-}
+//   return {
+//         categories: [1,2,3]
+//     };
+// }
 
 interface Category {
   name: string;
