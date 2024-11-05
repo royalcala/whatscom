@@ -21,5 +21,7 @@ model Tenant {
   id    Int    @id @default(autoincrement())
   //ecommerce attributes
   name  String @unique
+  //own domain, or subdoman.whatscom.com 
+  domain String @unique
   Users User[]
 }
