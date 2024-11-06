@@ -10,18 +10,25 @@ datasource db {
   directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
 }
 
-model User {
-  id       Int      @id @default(autoincrement())
-  phone    String   @unique
-  tenantId Int
-  Tenant   Tenant   @relation(fields: [tenantId], references: [id])
+model Tenant {
+  id       String   @id @default(uuid())
+  name     String
+  catalogs Catalog[]
 }
 
-model Tenant {
-  id    Int    @id @default(autoincrement())
-  //ecommerce attributes
-  name  String @unique
-  //own domain, or subdoman.whatscom.com 
-  domain String @unique
-  Users User[]
+model Catalog {
+  id        String    @id @default(uuid())
+  name      String
+  tenant    Tenant    @relation(fields: [tenantId], references: [id])
+  tenantId  String
+  products  Product[]
+}
+
+model Product {
+  id          String   @id @default(uuid())
+  name        String
+  price       Float
+  description String?
+  catalog     Catalog  @relation(fields: [catalogId], references: [id])
+  catalogId   String
 }

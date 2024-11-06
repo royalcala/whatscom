@@ -9,7 +9,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "migrate:dev": "npx prisma migrate dev",
+    "migrate:prod": "npx prisma migrate deploy",
+    "seed": "npx prisma db seed",
+    "migrate:reset": "npx prisma migrate reset --force && npm run seed"
   },
   "dependencies": {
     "@prisma/client": "^5.21.1",
