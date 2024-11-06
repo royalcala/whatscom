@@ -7,54 +7,113 @@
 ### **Key Features**
 
 1. **WhatsApp-Based Interaction**:
+
    - **WhatsApp-Only Communication**: All interactions—including product inquiries, order confirmations, and updates—occur on WhatsApp.
    - **WhatsApp Verification**: User identity is verified solely through WhatsApp, simplifying login and enhancing security.
    - **OpenAI-Powered Conversations**: OpenAI manages all user interactions, from product searches to order tracking, directly in WhatsApp for a conversational, interactive experience.
 
 1. **Multi-Tenant Support with Custom Domains**:
+
    - **Custom Domain Per Tenant**: Each tenant can have its own unique domain (e.g., `tenant1.com`), allowing for distinct branding and URLs.
-   - **Dynamic Tenant Routing**: Middleware in Next.js detects the tenant based on the incoming domain or a nextjs dynamic route  (/[tenantId]). Dynamically loading tenant-specific configurations.
+   - **Dynamic Tenant Routing**: Middleware in Next.js detects the tenant based on the incoming domain or a nextjs dynamic route (/[tenantId]). Dynamically loading tenant-specific configurations.
    - **Tenant-Specific Content and Theming**: Each tenant has its own custom theme, branding, and product catalog, ensuring a personalized experience.
 
 1. **Catalog Browsing and Payments**:
+
    - **Static Website as a Catalog**: Users can browse products on a static website that serves as an entry point. The site is built using Incremental Static Regeneration (ISR) to ensure content remains fresh while optimizing performance.
    - **Custom Payment Links via Stripe**: Purchases generate a secure, tokenized payment link sent via WhatsApp, allowing users to complete transactions safely on a Stripe-hosted page.
 
 1. **Payment Tracking**:
    - **Stripe Webhooks**: Order statuses are automatically updated via Stripe webhooks, with notifications sent to users in WhatsApp upon successful payments.
 
-1. **Portals**
-   1. **Project Admin Site**: This site is for the overall project administrators who manage global settings, platform-wide configurations, and oversee all tenants. (/app/admin)
+### Portals
 
-   1. **Tenant Admin Site**: Each tenant has its own admin site where tenant-specific settings can be managed, such as adding products, updating catalogs, and customizing themes. This site also provides tools for inventory management, order processing, and tenant-specific reporting and analytics. (/app/[tenantId]/admin)
+The project includes several portals, each tailored to specific user roles and functionalities. Below is an overview of each portal and its primary features.
 
-   1. **User Admin Site**: This site is for managing individual user settings and preferences, ensuring a personalized experience for each user. (/app/[tenantId]/user)
+1. **Admin Tenants Portal**:
 
-   1. **Public Site**: This is the public-facing site for each tenant. (/app/[tenantId])
+   **Purpose:**  
+   The Admin Tenants Portal is designed for the IT administrator to oversee and manage the core aspects of the platform, including tenants aspects.
+
+   **Features:**
+
+   - **Tenant Management:** Admins can add, edit, and delete tenants.
+
+1. **Tenants Public Portal**:
+
+   **Purpose:**  
+   The Tenants Public Portal to sell a tenant spaces where the client can create their ecommerce.
+
+   **Features:**
+
+   - **public web site (index page):** People can buy here an ecommerce solution, that will be this. 
+
+1. **Vendor Portal**
+
+   **Purpose:**  
+   The Vendor Portal enables vendors to independently manage their product listings and track their sales performance and manage CSS or some customizable website pages.
+
+   **Features:**
+
+   - **Product Listings:** Vendors can add, update, and manage their product offerings within the marketplace.
+   - **Sales Analytics:** Access metrics and sales performance data to better understand product popularity and sales trends.
+   - **Order Fulfillment:** Vendors can view and update order statuses, ensuring that orders are processed and shipped efficiently.
+   - **Domain:** Vendors can change the default subdomain to their own domains.
+   - **Website:** Vendors can change the website title, enable and customize some pages like a contact page, and other aspects.
+   - **Publish Changes:** After any change, vendors must publish changes so Next.js can revalidate changes from those aspects that need to have a manual revalidation.
+
+1. **Customer Portal**
+
+   **Purpose:**  
+   The Customer Portal provides a seamless shopping experience for customers, allowing them to browse products, make purchases, and track their orders.
+
+   **Features:**
+
+   - **Product Browsing:** Customers can search, filter, and view products, exploring the full catalog.
+   - **Shopping Cart:** A convenient shopping cart system that allows customers to add items, modify quantities, and proceed to secure checkout.
+   - **Order Tracking:** Customers can view their order history and track the status of ongoing shipments.
+
+1. **Vendor Public Portal**
+
+   **Purpose:**  
+   The Vendor Public Portal offers all the products and the customization page edited from the Vendor Portal.
+
+   **Features:**
+
+   - **Catalog and Products List:** Customers can submit support tickets for any issues they encounter, with tracking capabilities for updates and resolutions.
+   - **Custom Pages:** A couple of pages that can be enabled via the Vendor Portal.
+   - **WhatsApp Routing:** Redirect all possible customers to WhatsApp to enable one-to-one communications with OpenAI.
+
 ---
 
 ### **Technology Stack**
 
 1. **Next.js 15**:
+
    - **Multi-Tenant Routing**: Middleware and dynamic routing enable tenant-specific content delivery based on custom domains.
    - **Static Site Generation (ISR)**: Tenant-specific pages are generated at build time or upon first request, with periodic revalidation to keep content up-to-date.
    - **Serverless Functions**: Used for backend operations like payment processing and tenant-specific data fetching.
 
 1. **Serverless Database (e.g., AWS Aurora Serverless, PlanetScale)**:
+
    - **Multi-Tenant Data Isolation**: Tenants’ data is isolated within a shared database using schemas or identifiers, ensuring data security and efficient access.
    - **Dynamic Database Connections**: Connections are established based on tenant ID, allowing scalability while minimizing resource usage.
 
 1. **Vercel**:
+
    - **Hosting and Custom Domains**: Vercel hosts the platform, with custom domains set up for each tenant, directing traffic to the shared codebase and routing based on tenant configuration.
    - **Blob Storage for Media**: Product images and other media are stored in Vercel Blob Storage for optimized loading times.
 
 1. **Stripe**:
+
    - **Payment Processor**: Stripe securely processes payments, with custom payment links and webhook integrations for seamless order management.
 
 1. **Twilio**:
+
    - **WhatsApp Integration**: Twilio powers real-time messaging between users and the platform, enabling chat-based shopping and support.
 
 1. **OpenAI**:
+
    - **AI Conversations**: OpenAI assists users with product inquiries, order assistance, and personalized recommendations.
 
 1. **Prisma**:
@@ -65,25 +124,30 @@
 ### **1. Client (User) Side**
 
 #### **1.1 Multi-Tenant Product Browsing and Discovery**:
-   - **Custom Domain Access**: Users access their tenant’s site through a unique domain (e.g., `tenant1.com`).
-   - **Personalized Interface**: The platform loads tenant-specific branding, themes, and content dynamically.
+
+- **Custom Domain Access**: Users access their tenant’s site through a unique domain (e.g., `tenant1.com`).
+- **Personalized Interface**: The platform loads tenant-specific branding, themes, and content dynamically.
 
 #### **1.2 Product Inquiry and Support**:
-   - **WhatsApp Chat**: Users receive real-time responses to product questions, assisted by OpenAI, creating a personalized shopping experience.
+
+- **WhatsApp Chat**: Users receive real-time responses to product questions, assisted by OpenAI, creating a personalized shopping experience.
 
 #### **1.3 Order Placement and Payment**:
-   - **Secure Payment Links**: Stripe generates tenant-specific payment links for users to complete purchases directly on a secure Stripe-hosted page.
+
+- **Secure Payment Links**: Stripe generates tenant-specific payment links for users to complete purchases directly on a secure Stripe-hosted page.
 
 ---
 
 ### **2. Administrator Side**
 
 #### **2.1 Tenant Management and Configuration**:
-   - **Domain Mapping and Tenant Settings**: Admins manage custom domains and tenant-specific settings (e.g., themes, product catalog) in a central dashboard.
-   - **Inventory and Order Management**: Admins update inventory and orders via the admin interface or WhatsApp.
+
+- **Domain Mapping and Tenant Settings**: Admins manage custom domains and tenant-specific settings (e.g., themes, product catalog) in a central dashboard.
+- **Inventory and Order Management**: Admins update inventory and orders via the admin interface or WhatsApp.
 
 #### **2.2 Reporting and Analytics**:
-   - **Tenant-Specific Data**: Each tenant’s reports and analytics are isolated, allowing admins to view only their data.
+
+- **Tenant-Specific Data**: Each tenant’s reports and analytics are isolated, allowing admins to view only their data.
 
 ---
 
