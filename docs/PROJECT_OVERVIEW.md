@@ -23,11 +23,14 @@
 1. **Payment Tracking**:
    - **Stripe Webhooks**: Order statuses are automatically updated via Stripe webhooks, with notifications sent to users in WhatsApp upon successful payments.
 
-1. **Admin Site**
-   - **Admin Portals**: The admin portal allows for comprehensive management of the platform, including configurations related to the overall project. There are three distinct admin sites:
-     1. **Project Admin Site**: This site is for the overall project administrators who manage global settings, platform-wide configurations, and oversee all tenants.
-     2. **Tenant Admin Site**: Each tenant has its own admin site where tenant-specific settings can be managed, such as adding products, updating catalogs, and customizing themes. This site also provides tools for inventory management, order processing, and tenant-specific reporting and analytics.
-     3. **User Admin Site**: This site is for managing individual user settings and preferences, ensuring a personalized experience for each user.
+1. **Portals**
+   1. **Project Admin Site**: This site is for the overall project administrators who manage global settings, platform-wide configurations, and oversee all tenants. (/app/admin)
+
+   1. **Tenant Admin Site**: Each tenant has its own admin site where tenant-specific settings can be managed, such as adding products, updating catalogs, and customizing themes. This site also provides tools for inventory management, order processing, and tenant-specific reporting and analytics. (/app/[tenantId]/admin)
+
+   1. **User Admin Site**: This site is for managing individual user settings and preferences, ensuring a personalized experience for each user. (/app/[tenantId]/user)
+
+   1. **Public Site**: This is the public-facing site for each tenant. (/app/[tenantId])
 ---
 
 ### **Technology Stack**
