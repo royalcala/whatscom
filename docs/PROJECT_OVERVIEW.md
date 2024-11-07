@@ -1,30 +1,10 @@
 ### **WhatsCom Project Overview**
 
-**WhatsCom** is a chat-driven e-commerce platform designed to provide a seamless shopping experience, enabling users to browse products on a **Next.js-based website** and complete purchases via **WhatsApp chat**. With recent multi-tenant enhancements, WhatsCom can now serve multiple tenants, each with its own unique domain and branding, using a unified, efficient architecture.
-
----
+**WhatsCom** is a project to create ecommerces called tenants, with multi-tenant enhancements, WhatsCom can serve multiple tenants, each with its own unique domain and branding, using a unified, efficient architecture. Each tenant can have their own customizations, their own domain and the manly purpose of each ecommerce is a chat-driven e-commerce platform designed to provide a seamless shopping experience, enabling users to browse products on a **Next.js-based website** and complete purchases via **WhatsApp chat**.
 
 ### **Key Features**
 
-1. **WhatsApp-Based Interaction**:
-
-   - **WhatsApp-Only Communication**: All interactions—including product inquiries, order confirmations, and updates—occur on WhatsApp.
-   - **WhatsApp Verification**: User identity is verified solely through WhatsApp, simplifying login and enhancing security.
-   - **OpenAI-Powered Conversations**: OpenAI manages all user interactions, from product searches to order tracking, directly in WhatsApp for a conversational, interactive experience.
-
-1. **Multi-Tenant Support with Custom Domains**:
-
-   - **Custom Domain Per Tenant**: Each tenant can have its own unique domain (e.g., `tenant1.com`), allowing for distinct branding and URLs.
-   - **Dynamic Tenant Routing**: Middleware in Next.js detects the tenant based on the incoming domain or a nextjs dynamic route (/[tenantId]). Dynamically loading tenant-specific configurations.
-   - **Tenant-Specific Content and Theming**: Each tenant has its own custom theme, branding, and product catalog, ensuring a personalized experience.
-
-1. **Catalog Browsing and Payments**:
-
-   - **Static Website as a Catalog**: Users can browse products on a static website that serves as an entry point. The site is built using Incremental Static Regeneration (ISR) to ensure content remains fresh while optimizing performance.
-   - **Custom Payment Links via Stripe**: Purchases generate a secure, tokenized payment link sent via WhatsApp, allowing users to complete transactions safely on a Stripe-hosted page.
-
-1. **Payment Tracking**:
-   - **Stripe Webhooks**: Order statuses are automatically updated via Stripe webhooks, with notifications sent to users in WhatsApp upon successful payments.
+**WhatsCom** a web site to sell tenants, and manage and host each tenant, each tenant is an ecommerce who can be customize to sell via whatsApp.
 
 ### Portals
 
@@ -39,10 +19,12 @@ The project includes several portals, each tailored to specific user roles and f
 
    - **Tenant Management:** Admins can add, edit, and delete tenants.
 
+   - **TBD Features:** twilio for add to each tenant their own phone number.... etc.
+
 1. **Tenants Public Portal**:
 
    **Purpose:**  
-   The Tenants Public Portal to sell a tenant spaces where the client can create their ecommerce.
+   The Tenants Public Portal to sell a tenant spaces where the client can create their ecommerces.
 
    **Features:**
 
@@ -73,7 +55,7 @@ The project includes several portals, each tailored to specific user roles and f
    - **Shopping Cart:** A convenient shopping cart system that allows customers to add items, modify quantities, and proceed to secure checkout.
    - **Order Tracking:** Customers can view their order history and track the status of ongoing shipments.
 
-1. **Vendor Public Portal**
+1. **Sales Public Portal**
 
    **Purpose:**  
    The Vendor Public Portal offers all the products and the customization page edited from the Vendor Portal.
@@ -83,6 +65,18 @@ The project includes several portals, each tailored to specific user roles and f
    - **Catalog and Products List:** Customers can submit support tickets for any issues they encounter, with tracking capabilities for updates and resolutions.
    - **Custom Pages:** A couple of pages that can be enabled via the Vendor Portal.
    - **WhatsApp Routing:** Redirect all possible customers to WhatsApp to enable one-to-one communications with OpenAI.
+
+1. **WhatsApp Sales Portal**
+
+   **Purpose:**  
+   The purpose of the sales public portal is to reach possibles customers but all the shopping process is considered manly do it using whatsapp 
+
+   **Features:**
+   - **WhatsApp Communication**: All interactions—including product inquiries, order confirmations, and updates—occur on WhatsApp.
+   - **WhatsApp Verification**: User identity is verified solely through WhatsApp, simplifying login and enhancing security.
+   - **OpenAI-Powered Conversations**: OpenAI manages all user interactions, from product searches to order tracking, directly in WhatsApp for a conversational, interactive experience.
+   - **Custom Payment Links via Stripe**: Purchases generate a secure, tokenized payment link sent via WhatsApp, allowing users to complete transactions safely on a Stripe-hosted page.
+   - **Stripe Webhooks**: Order statuses are automatically updated via Stripe webhooks, with notifications sent to users in WhatsApp upon successful payments.
 
 ---
 
@@ -121,52 +115,12 @@ The project includes several portals, each tailored to specific user roles and f
 
 ---
 
-### **1. Client (User) Side**
-
-#### **1.1 Multi-Tenant Product Browsing and Discovery**:
-
-- **Custom Domain Access**: Users access their tenant’s site through a unique domain (e.g., `tenant1.com`).
-- **Personalized Interface**: The platform loads tenant-specific branding, themes, and content dynamically.
-
-#### **1.2 Product Inquiry and Support**:
-
-- **WhatsApp Chat**: Users receive real-time responses to product questions, assisted by OpenAI, creating a personalized shopping experience.
-
-#### **1.3 Order Placement and Payment**:
-
-- **Secure Payment Links**: Stripe generates tenant-specific payment links for users to complete purchases directly on a secure Stripe-hosted page.
-
----
-
-### **2. Administrator Side**
-
-#### **2.1 Tenant Management and Configuration**:
-
-- **Domain Mapping and Tenant Settings**: Admins manage custom domains and tenant-specific settings (e.g., themes, product catalog) in a central dashboard.
-- **Inventory and Order Management**: Admins update inventory and orders via the admin interface or WhatsApp.
-
-#### **2.2 Reporting and Analytics**:
-
-- **Tenant-Specific Data**: Each tenant’s reports and analytics are isolated, allowing admins to view only their data.
-
----
-
-### **3. Payments and Tracking**
-
-- **Stripe Webhooks** handle notifications, updating order statuses in the serverless database and sending WhatsApp confirmations to users.
-
-### **4. SEO and Marketing Strategy**
-
-- **Custom Domain SEO**: Each tenant's domain benefits from unique SEO settings, including tenant-specific meta tags, titles, and descriptions, optimized for search engine visibility.
-- **Tenant-Specific Marketing**: Each tenant can independently manage social media integrations like Facebook Pixel and Google Ads, driving traffic to their unique domain and funneling users into a chat-based shopping experience.
-
----
-
-### **TBD: Future Multi-Tenant Enhancements**
+### **TBD
 
 1. **Expanded Tenant Customization**: Additional options for deeper customization per tenant, including language, product filters, and layout choices.
-2. **Automated Domain Mapping**: Simplified workflow for adding new tenant domains without requiring manual setup.
-3. **Enhanced Analytics for Admins**: A dashboard providing deeper insights into tenant-specific sales, product views, and user engagement.
+1. **Automated Domain Mapping**: Simplified workflow for adding new tenant domains without requiring manual setup.
+1. **Marketing in social networks**: TBD.
+1. **Connections with FBA**: TBD.
 
 ### **Progress and Project Status**
 
