@@ -121,6 +121,11 @@ The project includes several portals, each tailored to specific user roles and f
 
 ---
 
+### **Useful Links**
+
+- [Prisma Schema](../prisma/schema.prisma): This file contains our database models.
+
+
 ### **TBD
 
 1. **Expanded Tenant Customization**: Additional options for deeper customization per tenant, including language, product filters, and layout choices.
