@@ -63,8 +63,14 @@ The project includes several portals, each tailored to specific user roles and f
    **Features:**
 
    - **Catalog and Products List:** Customers can submit support tickets for any issues they encounter, with tracking capabilities for updates and resolutions.
-   - **Custom Pages:** A couple of pages that can be enabled via the Vendor Portal.
-   - **WhatsApp Routing:** Redirect all possible customers to WhatsApp to enable one-to-one communications with OpenAI.
+    - **Custom Pages:** A couple of pages that can be enabled via the Vendor Portal.
+      1. **Root Page:** An introduction page with widgets displaying featured products, promotions, and other key information.
+      1. **Contact Page:** Vendors can enable and customize a contact page for customer inquiries.
+      1. **About Us Page:** Vendors can provide information about their business, mission, and values.
+      1. **Blog Page:** Vendors can create and manage blog posts to engage with customers and share updates.
+      1. **Catalog Page:** A dedicated page to display all products in a structured and searchable format.
+      1. **Products Page:** Vendors can showcase individual product details, including descriptions, images, and pricing.
+      1. **WhatsApp Routing:** Redirect all possible customers to WhatsApp to enable one-to-one communications with OpenAI.
 
 1. **WhatsApp Sales Portal**
 
